@@ -1,0 +1,25 @@
+{
+  "name": "w3schools-automation",
+  "version": "1.0.0",
+  "description": "w3schools e2e automation framework",
+  "scripts": {
+    "cy-run": "rm -rf cypress/assets && cypress run --browser chrome --headless --config-file=./cypress/cypress.config.ts",
+    "cy-open": "cypress open --config-file=./cypress/cypress.config.ts",
+    "cy-report": "allure generate cypress/assets/allure-results --clean -o cypress/assets/allure-report && allure open cypress/assets/allure-report"
+  },
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.34.0",
+    "@types/node": "^18.11.9",
+    "@types/randomstring": "^1.1.8",
+    "allure-commandline": "^2.20.1",
+    "chromedriver": "^107.0.3",
+    "cypress": "^11.0.0",
+    "cypress-iframe": "^1.0.1",
+    "cypress-xpath": "^2.0.1",
+    "dotenv": "^16.0.3",
+    "log4js": "^6.7.0",
+    "randomstring": "^1.2.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}
