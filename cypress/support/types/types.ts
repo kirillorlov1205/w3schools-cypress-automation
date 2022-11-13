@@ -10,6 +10,7 @@ export enum NAVIGATION_ITEMS {
 export enum PAGES {
     HOME = 'HomePage',
     LOGIN = 'LoginPage',
+    RESET_PASSWORD_PAGE = 'ResetPasswordPage'
 }
 
 export enum SEARCH_ITEMS {

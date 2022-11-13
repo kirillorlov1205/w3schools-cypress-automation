@@ -50,4 +50,9 @@ export class LoginPage extends BasePage {
         cy.task('log', 'Getting forgot password button...')
         return cy.get('div.LoginModal_forgot_pwd_wrapper__qttSX')
     }
+
+    public clickForgotPasswordButton() {
+        cy.task('log', 'Clicking forgot password button...')
+        this.getForgotPasswordButton().click()
+    }
 }
