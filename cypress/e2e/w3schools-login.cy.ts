@@ -5,10 +5,12 @@ import { LoginPage } from '../support/pages/LoginPage'
 import { PageFactory } from '../support/pages/PageFactory'
 import { INVALID_EMAILS, PAGES } from '../support/types/types'
 import randomstring from 'randomstring'
+import { SignUpPage } from 'cypress/support/pages/SignUpPage'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const loginPage: LoginPage = PageFactory.getPage(PAGES.LOGIN) as LoginPage
 const resetPasswordPage: ResetPasswordPage = PageFactory.getPage(PAGES.RESET_PASSWORD_PAGE) as ResetPasswordPage
+const signUpPage : SignUpPage = PageFactory.getPage(PAGES.SIGN_UP_PAGE) as SignUpPage
 
 describe('Login tests', () => {
 
@@ -28,6 +30,12 @@ describe('Login tests', () => {
             cy.login(TEST_USER.email, TEST_USER.password)
             homePage.navigationBar.getLogOutButton().should('be.visible')
             homePage.navigationBar.clickLogOutButton()
+        })
+
+        it('Should transfer the user to the sign up page while clicking on sign up button on login page', () => {
+            homePage.navigationBar.clickLoginButton()
+            loginPage.clickSignUpButton()
+            signUpPage.getSignUpSubmitButton().should('be.visible')
         })
 
         it(`Should show "${emptyEmailValidationMessage}" validation message while logging in with empty email and valid password`, () => {

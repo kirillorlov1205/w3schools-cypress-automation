@@ -55,4 +55,14 @@ export class LoginPage extends BasePage {
         cy.task('log', 'Clicking forgot password button...')
         this.getForgotPasswordButton().click()
     }
+
+    public getSignUpButton() {
+        cy.task('log', 'Getting sign up button...')
+        return cy.xpath('//span[contains(text()," Sign up")]')
+    }
+
+    public clickSignUpButton() {
+        cy.task('log', 'Clicking sign up button...')
+        this.getSignUpButton().click()
+    }
 }

@@ -3,7 +3,12 @@ import { SearchField } from './elements/SearchField'
 
 export class BasePage {
 
+    public navigationBar: NavigationBar
     protected url!: string
+
+    public constructor() {
+        this.navigationBar = new NavigationBar()
+    }
 
     public getPageTitle() {
         cy.task('log', 'Getting page title...')

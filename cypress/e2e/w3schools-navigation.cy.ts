@@ -19,11 +19,11 @@ describe('Onliner navigation bar tests', () => {
         'Forum': 'Форум'
     }
 
-    for (const pageTitle in pageTitlesMap) {
-        it(`Should navigate to the "${pageTitle}" page`, () => {
-            const key = pageTitle.toUpperCase() as keyof typeof NAVIGATION_ITEMS
-            homePage.navigationBar.clickOnNavigationItemByInnerLink(NAVIGATION_ITEMS[key])
-            homePage.waitTillPageHeaderIncludeText(pageTitle, pageTitlesMap[pageTitle as keyof typeof pageTitlesMap])
-        })
-    }
+    // for (const pageTitle in pageTitlesMap) {
+    //     it(`Should navigate to the "${pageTitle}" page`, () => {
+    //         const key = pageTitle.toUpperCase() as keyof typeof NAVIGATION_ITEMS
+    //         homePage.navigationBar.clickOnNavigationItemByInnerLink(NAVIGATION_ITEMS[key])
+    //         homePage.waitTillPageHeaderIncludeText(pageTitle, pageTitlesMap[pageTitle as keyof typeof pageTitlesMap])
+    //     })
+    // }
 })
