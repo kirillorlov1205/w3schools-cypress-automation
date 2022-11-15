@@ -1,6 +1,6 @@
 import { HomePage } from '../support/pages/HomePage'
 import { PageFactory } from '../support/pages/PageFactory'
-import { NAVIGATION_ITEMS, PAGES } from '../support/types/types'
+import { NAVIGATION_ITEMS, PAGES } from '../support/types/enums'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 

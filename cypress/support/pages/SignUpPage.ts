@@ -1,4 +1,4 @@
-import { SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../constants/constants'
+import { SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../types/constants'
 import { LoginPage } from './LoginPage'
 export class SignUpPage extends LoginPage {
 

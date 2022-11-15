@@ -1,9 +1,9 @@
 import { ResetPasswordPage } from 'cypress/support/pages/ResetPasswordPage'
-import { TEST_USER } from '../support/constants/constants'
+import { TEST_USER } from '../support/types/constants'
 import { HomePage } from '../support/pages/HomePage'
 import { LoginPage } from '../support/pages/LoginPage'
 import { PageFactory } from '../support/pages/PageFactory'
-import { INVALID_EMAILS, PAGES } from '../support/types/types'
+import { INVALID_EMAILS, PAGES } from '../support/types/enums'
 import randomstring from 'randomstring'
 import { SignUpPage } from 'cypress/support/pages/SignUpPage'
 

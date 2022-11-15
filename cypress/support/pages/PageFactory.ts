@@ -1,4 +1,4 @@
-import { PAGES } from '../types/types'
+import { PAGES } from '../types/enums'
 import { HomePage } from './HomePage'
 import { LoginPage } from './LoginPage'
 import { ResetPasswordPage } from './ResetPasswordPage'

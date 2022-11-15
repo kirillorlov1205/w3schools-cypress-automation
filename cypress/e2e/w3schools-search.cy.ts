@@ -1,6 +1,6 @@
 import { HomePage } from '../support/pages/HomePage'
 import { PageFactory } from '../support/pages/PageFactory'
-import { PAGES, SEARCH_ITEMS } from '../support/types/types'
+import { PAGES, SEARCH_ITEMS } from '../support/types/enums'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const textForTest = 'test'

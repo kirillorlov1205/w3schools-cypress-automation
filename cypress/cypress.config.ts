@@ -1,6 +1,6 @@
 import { defineConfig } from 'cypress'
 import AllureWriter from '@shelex/cypress-allure-plugin/writer'
-import { ASSETS_FOLDER, BASE_URL, DEFAULT_WAITNG_TIME } from './support/constants/constants'
+import { ASSETS_FOLDER, BASE_URL, DEFAULT_WAITNG_TIME } from './support/types/constants'
 import { logger } from './support/logger'
 
 export default defineConfig({

@@ -20,10 +20,10 @@ export enum SEARCH_ITEMS {
     FORUM = 'на форуме',
 }
 
-export const INVALID_EMAILS = {
-    withInvalidCharacterPrefix: 'abc#def@mail.com',
-    withInvalidTopDomain: 'abc.def@mail.c',
-    withInvalidCharacterDomain: 'abc.def@mail#archive.com',
-    withoutTopDomain: 'abc.def@mail',
-    withTwoDotsInTopDomain: 'abc.def@mail..com',
+export enum PASSWORD_VALIDATION_HELPERS {
+    LOWERCASE_CHARACTER = 'One lowercase character',
+    UPPERCASE_CHARACTER = 'One uppercase character',
+    ONE_NUMBER = 'One number',
+    ONE_SPECIAL_CHARACTER = 'One special character',
+    MINIMUM_CHARACTERS = '8 characters minimum'
 }

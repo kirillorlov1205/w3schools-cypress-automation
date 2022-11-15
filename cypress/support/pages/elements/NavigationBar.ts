@@ -1,4 +1,4 @@
-import { NAVIGATION_ITEMS } from '../../types/types'
+import { NAVIGATION_ITEMS } from '../../types/enums'
 
 export class NavigationBar {
 

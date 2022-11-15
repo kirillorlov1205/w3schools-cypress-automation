@@ -1,8 +1,8 @@
-import { SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../support/constants/constants'
+import { SIGN_UP_INVALID_PASSWORDS, SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../support/types/constants'
 import { HomePage } from '../support/pages/HomePage'
 import { LoginPage } from '../support/pages/LoginPage'
 import { PageFactory } from '../support/pages/PageFactory'
-import { INVALID_EMAILS, PAGES } from '../support/types/types'
+import { INVALID_EMAILS, PAGES } from '../support/types/enums'
 import randomstring from 'randomstring'
 import { SignUpPage } from 'cypress/support/pages/SignUpPage'
 
@@ -51,40 +51,15 @@ describe('Sign up tests', () => {
         loginPage.getSignUpButton().should('be.visible')
     })
 
-    it.only(`Should active password validation helper while registration with password 'TEST123!'`, () => {
-        homePage.navigationBar.clickLoginButton()
-        loginPage.clickSignUpButton()
-        signUpPage.getSignUpForFreeButton().should('be.visible')
-        signUpPage.fillEmailField(TEST_USER.email)
-        signUpPage.fillPasswordField('TEST123!')
-        signUpPage.getPasswordValidationHelperByName('One lowercase character').should('have.attr', 'fill', '#04AA6D')
-    })
-    
-
-
-
-
-
-
-
-    // it(`Should show "${invalidPasswordValidationMessage}" validation message while logging in with valid email and empty password`, () => {
-    //     homePage.navigationBar.clickLoginButton()
-    //     loginPage.fillEmailField(TEST_USER.email)
-    //     loginPage.submitForm()
-    //     loginPage.getValidationAlert().should('have.text', invalidPasswordValidationMessage)
-    // })
-
-    // it(`Should show "${invalidPasswordValidationMessage}" validation message while logging in with valid email and invalid password`, () => {
-    //     homePage.navigationBar.clickLoginButton()
-    //     loginPage.fillEmailField(TEST_USER.email)
-    //     loginPage.fillPasswordField(randomstring.generate(8))
-    //     loginPage.submitForm()
-    //     loginPage.getValidationAlert().should('have.text', invalidPasswordValidationMessage)
-    // })
-
-    // it('Should transfer the user to the reset password page', () => {
-    //     homePage.navigationBar.clickLoginButton()
-    //     loginPage.getForgotPasswordButton().click()
-    //     resetPasswordPage.getEmailField().should('be.visible')
-    // })
+    for (const value in SIGN_UP_INVALID_PASSWORDS) {
+        const invalidPassword = SIGN_UP_INVALID_PASSWORDS[value as keyof typeof SIGN_UP_INVALID_PASSWORDS]
+        it.only(`Should active password validation helper "${value}" while registration with invalid password "${invalidPassword}"`, () => {
+            homePage.navigationBar.clickLoginButton()
+            loginPage.clickSignUpButton()
+            signUpPage.getSignUpForFreeButton().should('be.visible')
+            signUpPage.fillEmailField(TEST_USER.email)
+            signUpPage.fillPasswordField(invalidPassword)
+            signUpPage.getPasswordValidationHelperByName(value).should('have.attr', 'fill', '#04AA6D')
+        })
+    }
 })
