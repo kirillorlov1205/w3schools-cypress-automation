@@ -1,6 +1,5 @@
-import { TEST_USER } from '../constants/constants'
+import { SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../constants/constants'
 import { LoginPage } from './LoginPage'
-import randomstring from 'randomstring'
 export class SignUpPage extends LoginPage {
 
     constructor() {
@@ -27,17 +26,32 @@ export class SignUpPage extends LoginPage {
         this.getNameFieldByType(nameFieldType).type(str)
     }
 
-    public register() {
-        const randomEmail = `${randomstring.generate(8)}@gmail.com`.toLowerCase()
+    public register(email: string, password: string, firstName: string, lastName: string) {
+        cy.task('log', `Registration the user with email "${email}", password "${password}", first name "${firstName}", last name "${lastName}...`)
         this.navigationBar.clickLoginButton()
         this.clickSignUpButton()
-        this.fillEmailField(randomEmail)
-        this.fillPasswordField(TEST_USER.password)
-        this.getValidationAlert().should('have.text', validCredsValidationMessage)
+        this.fillEmailField(email)
+        this.fillPasswordField(password)
+        this.getValidationAlert().should('have.text', SIGN_UP_VALIDATION_MESSAGES.validCredsValidationMessage)
         this.clickSignUpForFreeButton()
-        this.fillNameFieldByType('first', TEST_USER.firstName)
-        this.fillNameFieldByType('last', TEST_USER.lastName)
+        this.fillNameFieldByType('first', firstName)
+        this.fillNameFieldByType('last', lastName)
         this.clickSignUpForFreeButton()
-        this.getValidationAlert().should('have.text', `We've sent an email to ${randomEmail} with instructions.`)
+        this.getValidationAlert().should('have.text', `We've sent an email to ${email} with instructions.`)
+    }
+
+    public getReturnToLoginButton() {
+        cy.task('log', 'Getting Log in button...')
+        return cy.xpath('//span[contains(text(), " Log in")]')
+    }
+
+    public clickReturnToLoginButton() {
+        cy.task('log', 'Clicking log in button...')
+        this.getReturnToLoginButton().click()
+    }
+
+    public getPasswordValidationHelperByName(name: string) {
+        cy.task('log', `Getting password validation helper by name "${name}"...`)
+        return cy.xpath(`//li[contains(text(),'${name}')]//*[name()='circle']`)
     }
 }

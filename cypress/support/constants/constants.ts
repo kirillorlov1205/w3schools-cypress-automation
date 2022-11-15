@@ -14,3 +14,9 @@ export const TEST_USER = {
 export const LOGIN_VALIDATION_MESSAGES = {
     
 }
+
+export const SIGN_UP_VALIDATION_MESSAGES = {
+    invalidEmailValidationMessage : 'Looks like you forgot something',
+    emptyEmailValidationMessage: 'Please enter an email',
+    validCredsValidationMessage : "Your password is secure and you're all set!"
+}

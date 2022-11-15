@@ -1,4 +1,4 @@
-import { TEST_USER } from '../support/constants/constants'
+import { SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../support/constants/constants'
 import { HomePage } from '../support/pages/HomePage'
 import { LoginPage } from '../support/pages/LoginPage'
 import { PageFactory } from '../support/pages/PageFactory'
@@ -12,52 +12,60 @@ const signUpPage: SignUpPage = PageFactory.getPage(PAGES.SIGN_UP_PAGE) as SignUp
 
 describe('Sign up tests', () => {
 
+    const randomEmail = `${randomstring.generate(8)}@gmail.com`.toLowerCase()
+
     beforeEach(() => {
         homePage.visitPage()
     })
 
-    const invalidEmailValidationMessage = 'Looks like you forgot something'
-    const validCredsValidationMessage = "Your password is secure and you're all set!"
-
-    it.only('Should successfully register the user with valid credentials', () => {
-        const randomEmail = `${randomstring.generate(8)}@gmail.com`.toLowerCase()
-        homePage.navigationBar.clickLoginButton()
-        loginPage.clickSignUpButton()
-        signUpPage.fillEmailField(randomEmail)
-        signUpPage.fillPasswordField(TEST_USER.password)
-        signUpPage.getValidationAlert().should('have.text', validCredsValidationMessage)
-        signUpPage.clickSignUpForFreeButton()
-        signUpPage.fillNameFieldByType('first', TEST_USER.firstName)
-        signUpPage.fillNameFieldByType('last', TEST_USER.lastName)
-        signUpPage.clickSignUpForFreeButton()
-        signUpPage.getValidationAlert().should('have.text', `We've sent an email to ${randomEmail} with instructions.`)
+    it(`Should successfully register the user with email "${randomEmail}", 
+    password "${TEST_USER.password}", first name "${TEST_USER.firstName}", lastName "${TEST_USER.lastName}"`, () => {
+        signUpPage.register(randomEmail, TEST_USER.password, TEST_USER.firstName, TEST_USER.lastName)
     })
 
-    // it(`Should show "${emptyEmailValidationMessage}" validation message while logging in with empty email and valid password`, () => {
-    //     homePage.navigationBar.clickLoginButton()
-    //     loginPage.fillPasswordField(TEST_USER.password)
-    //     loginPage.submitForm()
-    //     loginPage.getEmailValidationMessage().should('have.text', emptyEmailValidationMessage)
-    // })
+    it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.emptyEmailValidationMessage}" validation message while registration with empty email and valid password`, () => {
+        homePage.navigationBar.clickLoginButton()
+        loginPage.clickSignUpButton()
+        signUpPage.fillPasswordField(TEST_USER.password)
+        signUpPage.clickSignUpForFreeButton()
+        signUpPage.getEmailValidationMessage().should('have.text', SIGN_UP_VALIDATION_MESSAGES.emptyEmailValidationMessage)
+    })
 
-    // for (const value in INVALID_EMAILS) {
-    //     const invalidEmail = INVALID_EMAILS[value as keyof typeof INVALID_EMAILS]
-    //     it(`Should show "${invalidEmailValidationMessage}" validation message while logging in with invalid email "${invalidEmail}" and valid password`, () => {
-    //         homePage.navigationBar.clickLoginButton()
-    //         loginPage.fillEmailField(invalidEmail)
-    //         loginPage.fillPasswordField(TEST_USER.password)
-    //         loginPage.submitForm()
-    //         loginPage.getEmailValidationMessage().should('have.text', invalidEmailValidationMessage)
-    //     })
-    // }
+    for (const value in INVALID_EMAILS) {
+        const invalidEmail = INVALID_EMAILS[value as keyof typeof INVALID_EMAILS]
+        it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidEmailValidationMessage}" validation message while registration with invalid email "${invalidEmail}" and valid password`, () => {
+            homePage.navigationBar.clickLoginButton()
+            loginPage.clickSignUpButton()
+            signUpPage.getSignUpForFreeButton().should('be.visible')
+            signUpPage.fillEmailField(invalidEmail)
+            signUpPage.fillPasswordField(TEST_USER.password)
+            signUpPage.clickSignUpForFreeButton()
+            signUpPage.getEmailValidationMessage().should('have.text', SIGN_UP_VALIDATION_MESSAGES.invalidEmailValidationMessage)
+        })
+    }
 
-    // it(`Should show "${emailDoesNotExistValidationMessage}" validation message while logging in with a valid email that doesn't exist in the system and valid password`, () => {
-    //     homePage.navigationBar.clickLoginButton()
-    //     loginPage.fillEmailField(`${randomstring.generate(8)}@gmail.com`)
-    //     loginPage.fillPasswordField(TEST_USER.password)
-    //     loginPage.submitForm()
-    //     loginPage.getValidationAlert().should('have.text', emailDoesNotExistValidationMessage)
-    // })
+    it(`Should transfer the user to the login page while clicking button Log in on the Sign up page`, () => {
+        homePage.navigationBar.clickLoginButton()
+        loginPage.clickSignUpButton()
+        signUpPage.clickReturnToLoginButton()
+        loginPage.getSignUpButton().should('be.visible')
+    })
+
+    it.only(`Should active password validation helper while registration with password 'TEST123!'`, () => {
+        homePage.navigationBar.clickLoginButton()
+        loginPage.clickSignUpButton()
+        signUpPage.getSignUpForFreeButton().should('be.visible')
+        signUpPage.fillEmailField(TEST_USER.email)
+        signUpPage.fillPasswordField('TEST123!')
+        signUpPage.getPasswordValidationHelperByName('One lowercase character').should('have.attr', 'fill', '#04AA6D')
+    })
+    
+
+
+
+
+
+
 
     // it(`Should show "${invalidPasswordValidationMessage}" validation message while logging in with valid email and empty password`, () => {
     //     homePage.navigationBar.clickLoginButton()
