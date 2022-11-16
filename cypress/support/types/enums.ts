@@ -27,3 +27,8 @@ export enum PASSWORD_VALIDATION_HELPERS {
     ONE_SPECIAL_CHARACTER = 'One special character',
     MINIMUM_CHARACTERS = '8 characters minimum'
 }
+
+export enum SIGN_UP_NAME_TYPES {
+    FIRST_NAME = 'first_name',
+    LAST_NAME = 'last_name'
+}

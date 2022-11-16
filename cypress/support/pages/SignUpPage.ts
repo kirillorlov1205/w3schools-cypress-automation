@@ -1,4 +1,5 @@
 import { SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../types/constants'
+import { SIGN_UP_NAME_TYPES } from '../types/enums'
 import { LoginPage } from './LoginPage'
 export class SignUpPage extends LoginPage {
 
@@ -16,12 +17,12 @@ export class SignUpPage extends LoginPage {
         this.getSignUpForFreeButton().click()
     }
 
-    public getNameFieldByType(nameFieldType: string) {
+    public getNameFieldByType(nameFieldType: SIGN_UP_NAME_TYPES) {
         cy.task('log', `Getting ${nameFieldType} name field...`)
-        return cy.get(`input[name ="${nameFieldType}_name"]`)
+        return cy.get(`input[name ="${nameFieldType}"]`)
     }
 
-    public fillNameFieldByType(nameFieldType: string, str: string) {
+    public fillNameFieldByType(nameFieldType: SIGN_UP_NAME_TYPES, str: string) {
         cy.task('log', `Filling ${nameFieldType} name field...`)
         this.getNameFieldByType(nameFieldType).type(str)
     }
@@ -34,8 +35,8 @@ export class SignUpPage extends LoginPage {
         this.fillPasswordField(password)
         this.getValidationAlert().should('have.text', SIGN_UP_VALIDATION_MESSAGES.validCredsValidationMessage)
         this.clickSignUpForFreeButton()
-        this.fillNameFieldByType('first', firstName)
-        this.fillNameFieldByType('last', lastName)
+        this.fillNameFieldByType(SIGN_UP_NAME_TYPES.FIRST_NAME, firstName)
+        this.fillNameFieldByType(SIGN_UP_NAME_TYPES.LAST_NAME, lastName)
         this.clickSignUpForFreeButton()
         this.getValidationAlert().should('have.text', `We've sent an email to ${email} with instructions.`)
     }
@@ -53,5 +54,20 @@ export class SignUpPage extends LoginPage {
     public getPasswordValidationHelperByName(name: string) {
         cy.task('log', `Getting password validation helper by name "${name}"...`)
         return cy.xpath(`//li[contains(text(),'${name}')]//*[name()='circle']`)
+    }
+
+    public getNameInputErrorMessage() {
+        cy.task('log', 'Getting name input error message...')
+        return cy.get("span.NameInput_email_error__Wr-Sd")
+    }
+
+    public getResendEmailButton() {
+        cy.task('log', 'Getting resend email button...')
+        return cy.get('div.LoginModal_forgot_pwd_wrapper__qttSX button')
+    }
+
+    public clickResendEmailButton() {
+        cy.task('log', 'Clicking resend email button...')
+        this.getResendEmailButton().click()
     }
 }
