@@ -1,5 +1,3 @@
-import { NAVIGATION_ITEMS } from '../../types/enums'
-
 export class NavigationBar {
 
     constructor() { }
@@ -24,13 +22,33 @@ export class NavigationBar {
         this.getLogOutButton().click()
     }
 
-    // public getNavigationItemByInnerLink = (link: NAVIGATION_ITEMS) => {
-    //     cy.task('log', `Getting navigation item by inner "${link}" link...`)
-    //     return cy.get(`a[href = "${link}"] span.b-main-navigation__text`)
-    // }
+    public getHomePageNavigationButton() {
+        cy.task('log', 'Getting home page button...')
+        return cy.get('a[href="https://www.w3schools.com "]')
+    }
 
-    // public clickOnNavigationItemByInnerLink = (link: NAVIGATION_ITEMS) => {
-    //     cy.task('log', `Clicking on navigation item by inner "${link}" link...`)
-    //     this.getNavigationItemByInnerLink(link).click()
-    // }
+    public clickHomePageButton = () => {
+        cy.task('log', 'Clicking home page button...')
+        this.getHomePageNavigationButton().click()
+    }
+
+    public getNavigationItemByName = (name: string) => {
+        cy.task('log', `Getting navigation item by name "${name}"...`)
+        return cy.xpath(`//div[contains(@class, 'w3-bar')]/a[contains(text(), "${name}")]`)
+    }
+
+    public clickNavigationItemByName = (name: string) => {
+        cy.task('log', `Clicking on navigation item by name "${name}"...`)
+        this.getNavigationItemByName(name).click()
+    }
+
+    public getItemFromDropdownMenuByName = (name: string) => {
+        cy.task('log', `Getting item from dropdown menu by name "${name}"...`)
+        return cy.xpath(`//div[contains(@class, "w3-row-padding")]//div[contains(@class, 'w3-col')]/a[contains(text(), "${name}")]`)
+    }
+
+    public clickItemFromDropdownMenuByName = (name: string) => {
+        cy.task('log', `Clicking item from dropdown menu by name "${name}"...`)
+        this.getItemFromDropdownMenuByName(name).click()
+    }
 }

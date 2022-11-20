@@ -65,4 +65,14 @@ export class LoginPage extends BasePage {
         cy.task('log', 'Clicking sign up button...')
         this.getSignUpButton().click()
     }
+    
+    public getHomePageButton() {
+        cy.task('log', 'Getting home page button...')
+        return cy.get('a[href="https://w3schools.com"]')
+    }
+
+    public clickHomePageButton = () => {
+        cy.task('log', 'Clicking home page button...')
+        this.getHomePageButton().click()
+    }
 }

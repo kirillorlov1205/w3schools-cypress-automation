@@ -1,6 +1,6 @@
 import { HomePage } from '../support/pages/HomePage'
 import { PageFactory } from '../support/pages/PageFactory'
-import { NAVIGATION_ITEMS, PAGES } from '../support/types/enums'
+import { NAVIGATION_ITEMS_NAMES, PAGES } from '../support/types/enums'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 
@@ -10,20 +10,22 @@ describe('Onliner navigation bar tests', () => {
         homePage.visitPage()
     })
 
-    const pageTitlesMap = {
-        'Catalog': 'Все суперцены!',
-        'Auto': 'Автобарахолка',
-        'Realt': 'Продажа',
-        'Tasks': 'Заказы',
-        'Baraholka': 'Барахолка',
-        'Forum': 'Форум'
+    const tutorialsPageTitlesMap = {
+        'Learn HTML': 'https://www.w3schools.com/html/default.asp',
+        'Learn CSS': 'https://www.w3schools.com/css/default.asp',
+        'Learn RWD': 'https://www.w3schools.com/css/css_rwd_intro.asp',
+        'Learn Bootstrap': '/bootstrap/bootstrap_ver.asp',
+        // '': '',
+        // '': '',
+
     }
 
-    // for (const pageTitle in pageTitlesMap) {
-    //     it(`Should navigate to the "${pageTitle}" page`, () => {
-    //         const key = pageTitle.toUpperCase() as keyof typeof NAVIGATION_ITEMS
-    //         homePage.navigationBar.clickOnNavigationItemByInnerLink(NAVIGATION_ITEMS[key])
-    //         homePage.waitTillPageHeaderIncludeText(pageTitle, pageTitlesMap[pageTitle as keyof typeof pageTitlesMap])
-    //     })
-    // }
+    for (const pageTitle in tutorialsPageTitlesMap) {
+        const pageLink = tutorialsPageTitlesMap[pageTitle as keyof typeof tutorialsPageTitlesMap]
+        it(`Should navigate to the "${pageTitle}" page from "Tutorials" dropdown`, () => {
+            homePage.navigationBar.clickNavigationItemByName(NAVIGATION_ITEMS_NAMES.TUTORIALS)
+            homePage.navigationBar.clickItemFromDropdownMenuByName(pageTitle)
+            homePage.getCurrentUrl().should('eq', pageLink)
+        })
+    }
 })

@@ -25,6 +25,16 @@ export class BasePage {
         return cy.url()
     }
 
+    public getPageHeaderByName(name: string) {
+        cy.task('log', `Getting page header by "${name}" name ...`)
+        return cy.xpath(`//div[contains(@class, "w3-bar")]/a[contains(text(), "${name} ")]`)
+    }
+
+    public clickPageHeaderByName(name: string) {
+        cy.task('log', `Clicking page header by "${name}" name ...`)
+        this.getPageHeaderByName(name).click()
+    }
+
     // public getPageHeaderByName = (name: string) => {
     //     cy.task('log', `Getting page header by "${name}" name...`)
     //     switch (name) {
