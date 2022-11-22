@@ -51,4 +51,9 @@ export class NavigationBar {
         cy.task('log', `Clicking item from dropdown menu by name "${name}"...`)
         this.getItemFromDropdownMenuByName(name).click()
     }
+
+    // public getThemeOfPage = (: string) => {
+    //     cy.task('log', `Getting item from dropdown menu by name "${name}"...`)
+    //     return cy.xpath(`//body[contains(@class, '${}')]`)
+    // }
 }

@@ -52,3 +52,37 @@ export const SIGN_UP_INVALID_NAMES = {
     'Has number': 'Name1',
     'Has special character': 'Name!',
 }
+
+export const REFERENCES_PAGE_TITLES_MAP = {
+    'HTML Tag Reference': `tags/default.asp`,
+    'HTML Browser Support': 'tags/ref_html_browsersupport.asp',
+    'HTML Event Reference': 'tags/ref_eventattributes.asp',
+    'HTML Color Reference': 'colors/default.asp',
+    'HTML Attribute Reference': 'tags/ref_attributes.asp',
+    'HTML Canvas Reference': 'tags/ref_canvas.asp',
+    'XML DOM Reference': 'xml/dom_nodetype.asp',
+    'JavaScript Reference': 'jsref/default.asp',
+    'HTML DOM Reference': 'jsref/default.asp',
+    'HTML Character Sets': 'charsets/default.asp',
+}
+
+export const TUTORIALS_PAGE_TITLES_MAP = {
+    'Learn HTML': `html/default.asp`,
+    'Learn CSS': 'css/default.asp',
+    'Learn RWD': 'css/css_rwd_intro.asp',
+    'Learn Bootstrap': 'bootstrap/bootstrap_ver.asp',
+    'Learn W3.CSS': 'w3css/default.asp',
+    'Learn Colors': 'colors/default.asp',
+    'Learn Icons': 'icons/default.asp',
+    'Learn Graphics': 'graphics/default.asp',
+    'Learn SVG': 'graphics/svg_intro.asp',
+    'Learn Canvas': 'graphics/canvas_intro.asp'
+}
+
+export const EXERCISES_PAGE_TITLES_MAP = {
+    'HTML Exercises': 'html/html_exercises.asp',
+    'CSS Exercises': 'css/css_exercises.asp',
+    'JavaScript Exercises': 'js/js_exercises.asp',
+    'CSS Quiz': 'css/css_quiz.asp',
+    'MySQL Quiz': 'mysql/mysql_quiz.asp',
+}
