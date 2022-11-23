@@ -52,8 +52,30 @@ export class NavigationBar {
         this.getItemFromDropdownMenuByName(name).click()
     }
 
-    // public getThemeOfPage = (: string) => {
-    //     cy.task('log', `Getting item from dropdown menu by name "${name}"...`)
-    //     return cy.xpath(`//body[contains(@class, '${}')]`)
-    // }
+    public getThemeSwitcher = () => {
+        cy.task('log', `Getting theme switcher...`)
+        return cy.get(`a[xxtitle="Toggle Dark Code"] i`)
+    }
+
+    public clickThemeSwitcher = () => {
+        cy.task('log', `Clicking on theme switcher...`)
+        this.getThemeSwitcher().click()
+    }
+
+
+    public getThemeFromDropdownByName = (themeName: string) => {
+        cy.task('log', `Getting theme by name "${themeName}"...`)
+        return cy.xpath(`//label[contains(text(), '${themeName}')]`)
+    }
+
+    public switchThemeByName = (themeName: string) => {
+        cy.task('log', `Switching theme to "${themeName}"...`)
+        this.getThemeSwitcher().trigger('mouseover')
+        this.getThemeFromDropdownByName(themeName).click()
+    }
+
+    public getPageByTheme = (themeName: string) => {
+        cy.task('log', `Getting page by theme name "${themeName}"...`)
+        return cy.xpath(`//body[contains(@class, '${themeName}')]`)
+    }
 }

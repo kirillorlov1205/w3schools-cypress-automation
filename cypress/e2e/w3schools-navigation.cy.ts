@@ -39,11 +39,21 @@ describe('Onliner navigation bar tests', () => {
         })
     }
 
-    // it(`Should navigate to the "${pageTitle}" page from "Exercises" dropdown`, () => {
-    //     homePage.navigationBar.clickNavigationItemByName(NAVIGATION_ITEMS_NAMES.EXERCISES)
-    //     homePage.navigationBar.clickItemFromDropdownMenuByName(pageTitle)
-    //     homePage.getCurrentUrl().should('eq', `${BASE_URL}${pageLink}`)
-    // })
+    const THEMES = {
+        'Dark mode': 'darkpagetheme',
+        'Dark code': 'darktheme',
+    }
 
+    for (const theme in THEMES) {
+        const themeIndicator = THEMES[theme as keyof typeof THEMES]
+        it(`Should change the theme of the page to "${theme}"`, () => {
+            homePage.navigationBar.switchThemeByName(theme)
+            homePage.navigationBar.getPageByTheme(themeIndicator).should('be.visible')
+        })
+    }
 
+    it.only(`Should change the theme of the page to "Dark mode and Dark code" by clicking on theme Switcher`, () => {
+        homePage.navigationBar.clickThemeSwitcher()
+        homePage.navigationBar.getPageByTheme('darkpagetheme darktheme').should('be.visible')
+    })
 })
