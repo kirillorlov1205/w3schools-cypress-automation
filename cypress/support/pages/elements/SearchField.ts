@@ -2,38 +2,39 @@ export class SearchField {
 
     constructor() { }
 
-    public getSearchField = () => {
+    public getSearchIcon = () => {
         cy.task('log', 'Getting search field...')
         return cy.get('a.w3searchbtntopnav')
     }
 
+    public clickSearchIcon = () => {
+        cy.task('log', 'Clicking search field...')
+        this.getSearchIcon().click()
+    }
+
+    public getSearchField = () => {
+        cy.task('log', 'Getting search field...')
+        return cy.get('input[name = "search"]')
+    }
+
+    public getSubmitSearchButton = () => {
+        cy.task('log', 'Getting submit search button...')
+        return cy.get('button.gsc-search-button')
+    }
+
+    public clickSubmitSearchButton = () => {
+        cy.task('log', 'Clicking submit search button...')
+        this.getSubmitSearchButton().click()
+    }
+
     public fillSearchField = (str: string) => {
         cy.task('log', `Searching for "${str}"...`)
-        this.getSearchField().type(str) 
+        this.getSearchField().click().type(str)
+        this.clickSubmitSearchButton() 
     }
 
     public getSearchModalPage = () => {
         cy.task('log', 'Getting search modal page...')
-        return cy.get('div.gsc-results-wrapper-overlay')
+        return cy.get('div.gsc-resultsbox-visible')
     }
-
-    // public getSearchTabsItemByName = (name: string) => {
-    //     cy.task('log', `Getting search tabs item by "${name}" name...`)
-    //     return this.getSearchModalPage().xpath(`//div[text() = '${name}']`)
-    // }
-
-    // public getSearchFilterItemByName = (name: string) => {
-    //     cy.task('log', `Getting search filter item by "${name}" name...`)
-    //     return this.getSearchModalPage().xpath(`//a[text() = '${name}']`)
-    // }
-
-    // public getCatalogSearchResultsList = () => {
-    //     cy.task('log', 'Getting Catalog search result list...')
-    //     return this.getSearchModalPage().find('ul.search__results')
-    // }
-
-    // public getResultItemFromForumList = () => {
-    //     cy.task('log', 'Getting result item from forum list...')
-    //     return this.getSearchModalPage().find('div.result__item_forum')
-    // }
 }

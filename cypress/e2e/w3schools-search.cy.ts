@@ -11,15 +11,41 @@ describe('Search test', () => {
         homePage.visitPage()
     })
 
-    // it('Should not open search modal page without providing text', () => {
-    //     homePage.searchField.clickSearchField()
-    //     homePage.searchField.getSearchField().should('be.visible')
-    // })
-
     it(`Should search for "${textForTest}"`, () => {
+        //"o"
+        //
+        homePage.searchField.clickSearchIcon()
         homePage.searchField.fillSearchField(textForTest)
-        homePage.searchField.getSearchModalPage()
+        homePage.searchField.getSearchModalPage().should('be.visible')
     })
+
+    it(`Shouldn't open search modal page without providing any text in the search field`, () => {
+        homePage.searchField.clickSearchIcon()
+        homePage.searchField.clickSubmitSearchButton()
+        homePage.searchField.getSearchModalPage().should('not.exist')
+    })
+
+    it(`Shouldn't open search modal page without providing any text in the search field`, () => {
+        homePage.searchField.clickSearchIcon()
+        homePage.searchField.clickSubmitSearchButton()
+        homePage.searchField.getSearchModalPage().should('not.exist')
+    })
+
+    enum SPECIAL_SIMBOLS {
+        tilde = '~',
+        exclamation = '!',
+        hash = '#',
+        percent = '%',
+        caret = '^',
+        asterisk = '*',
+        hyphen = '-',
+        equals = '=',
+    //     equals = '=',
+    // }
+
+    // for (const key in object) {
+
+    // }
 
     // it(`Should show search section "в новостях" on modal page while clicking and providing text "${textForTest}"`, () => {
     //     homePage.searchField.fillSearchField(textForTest)
