@@ -86,3 +86,8 @@ export const EXERCISES_PAGE_TITLES_MAP = {
     'CSS Quiz': 'css/css_quiz.asp',
     'MySQL Quiz': 'mysql/mysql_quiz.asp',
 }
+
+export const THEMES = {
+    'Dark mode': 'darkpagetheme',
+    'Dark code': 'darktheme',
+}
