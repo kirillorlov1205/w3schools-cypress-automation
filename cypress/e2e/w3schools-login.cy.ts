@@ -80,6 +80,12 @@ describe('Login tests', () => {
             loginPage.getForgotPasswordButton().click()
             resetPasswordPage.getEmailField().should('be.visible')
         })
+
+        it(`Should transfer the user to the Home page while clicking on "Home Page" navigation button on the Login page`, () => {
+            homePage.navigationBar.clickLoginButton()
+            loginPage.clickHomePageButton()
+            homePage.getWhereToBeginButton().should('be.visible')
+        })
     })
 
     describe('Reset password page tests', () => {
@@ -134,6 +140,12 @@ describe('Login tests', () => {
             resetPasswordPage.fillEmailField(`${randomstring.generate(8)}@gmail.com`)
             resetPasswordPage.clickResetPasswordSubmitButton()
             resetPasswordPage.getEmailDoesNotExistAlert().should('have.text', PASSWORD_RESET_VALIDATION_MESSAGES.emailDoesNotExistAlert)
+        })
+
+        it(`Should transfer the user to the Home page while clicking on "Home Page" navigation button on the Password reset page`, () => {
+            homePage.navigationBar.clickLoginButton()
+            loginPage.clickHomePageButton()
+            homePage.getWhereToBeginButton().should('be.visible')
         })
     })
 })

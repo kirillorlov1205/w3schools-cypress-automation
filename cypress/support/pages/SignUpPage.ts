@@ -63,7 +63,7 @@ export class SignUpPage extends LoginPage {
 
     public getResendEmailButton() {
         cy.task('log', 'Getting resend email button...')
-        return cy.get('div.LoginModal_forgot_pwd_wrapper__qttSX button')
+        return cy.get('//button[contains(text(), "Resend verification email")]')
     }
 
     public clickResendEmailButton() {

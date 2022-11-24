@@ -5,7 +5,7 @@ import { logger } from './support/logger'
 
 export default defineConfig({
   e2e: {
-    specPattern: 'cypress/**/*sign-up.cy.ts',
+    specPattern: 'cypress/**/*search.cy.ts',
     baseUrl: BASE_URL,
     defaultCommandTimeout: DEFAULT_WAITNG_TIME,
     supportFile: 'cypress/support/index.ts',
@@ -29,6 +29,6 @@ export default defineConfig({
     env: {
       allure: 'true',
       allureResultsPath: 'cypress/assets/allure-results'
-    }
+    },
   }
 })
