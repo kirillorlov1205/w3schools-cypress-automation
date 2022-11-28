@@ -78,4 +78,16 @@ export class NavigationBar {
         cy.task('log', `Getting page by theme name "${themeName}"...`)
         return cy.xpath(`//body[contains(@class, '${themeName}')]`)
     }
+
+    public getButtonWithOuterLink = (title: string) => {
+        cy.task('log', `Getting button with outer link by title "${title}"...`)
+        return cy.get(`a[title = "${title}"]`)
+    }
+
+    public clickOnButtonWithOuterLink = (title: string) => {
+        cy.task('log', `Clicking on button with outer link by title "${title}"...`)
+        this.getButtonWithOuterLink(title)
+            .invoke('removeAttr', 'target')
+            .click()
+    }
 }

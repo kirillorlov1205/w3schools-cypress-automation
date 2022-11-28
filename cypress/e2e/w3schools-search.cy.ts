@@ -1,6 +1,6 @@
 import { HomePage } from '../support/pages/HomePage'
 import { PageFactory } from '../support/pages/PageFactory'
-import { PAGES, SEARCH_ITEMS } from '../support/types/enums'
+import { PAGES, SPECIAL_SYMBOLS } from '../support/types/enums'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const textForTest = 'test'
@@ -12,8 +12,6 @@ describe('Search test', () => {
     })
 
     it(`Should search for "${textForTest}"`, () => {
-        //"o"
-        //
         homePage.searchField.clickSearchIcon()
         homePage.searchField.fillSearchField(textForTest)
         homePage.searchField.getSearchModalPage().should('be.visible')
@@ -31,37 +29,18 @@ describe('Search test', () => {
         homePage.searchField.getSearchModalPage().should('not.exist')
     })
 
-    enum SPECIAL_SIMBOLS {
-        tilde = '~',
-        exclamation = '!',
-        hash = '#',
-        percent = '%',
-        caret = '^',
-        asterisk = '*',
-        hyphen = '-',
-        equals = '=',
-    //     equals = '=',
-    // }
+    for (const key in SPECIAL_SYMBOLS) {
+        const specialSymbol = SPECIAL_SYMBOLS[key as keyof typeof SPECIAL_SYMBOLS]
+        it(`Should search for special symbol "${specialSymbol}"`, () => {
+            homePage.searchField.clickSearchIcon()
+            homePage.searchField.fillSearchField(specialSymbol)
+            homePage.searchField.getSearchModalPage().should('be.visible')
+        })
+    }
 
-    // for (const key in object) {
-
-    // }
-
-    // it(`Should show search section "в новостях" on modal page while clicking and providing text "${textForTest}"`, () => {
-    //     homePage.searchField.fillSearchField(textForTest)
-    //     homePage.searchField.getSearchTabsItemByName(SEARCH_ITEMS.NEWS).click()
-    //     homePage.searchField.getSearchFilterItemByName('За полгода').should('be.visible')
-    // })
-
-    // it(`Should show search section "на барахолке" on modal page while clicking and providing text "${textForTest}"`, () => {
-    //     homePage.searchField.fillSearchField(textForTest)
-    //     homePage.searchField.getSearchTabsItemByName(SEARCH_ITEMS.BARAHOLKA).click()
-    //     homePage.searchField.getCatalogSearchResultsList().should('be.visible')
-    // })
-
-    // it(`Should show search section "на форуме" on modal page while clicking and providing text "${textForTest}"`, () => {
-    //     homePage.searchField.fillSearchField(textForTest)
-    //     homePage.searchField.getSearchTabsItemByName(SEARCH_ITEMS.FORUM).click()
-    //     homePage.searchField.getResultItemFromForumList().should('be.visible')
-    // })
+    it(`Shouldn't open search modal page while searching for space character " "`, () => {
+        homePage.searchField.clickSearchIcon()
+        homePage.searchField.clickSubmitSearchButton()
+        homePage.searchField.getSearchModalPage().should('not.exist')
+    })
 })

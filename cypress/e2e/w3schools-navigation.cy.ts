@@ -2,7 +2,7 @@ import { BASE_URL, EXERCISES_PAGE_TITLES_MAP, THEMES } from 'cypress/support/typ
 import { HomePage } from '../support/pages/HomePage'
 import { PageFactory } from '../support/pages/PageFactory'
 import { NAVIGATION_ITEMS_NAMES, PAGES } from '../support/types/enums'
-import { REFERENCES_PAGE_TITLES_MAP, TUTORIALS_PAGE_TITLES_MAP } from '../support/types/constants'
+import { REFERENCES_PAGE_TITLES_MAP, TUTORIALS_PAGE_TITLES_MAP, OUTER_PAGE_TITLES_MAP } from '../support/types/constants'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 
@@ -12,7 +12,7 @@ describe('w3shools navigation bar tests', () => {
         homePage.visitPage()
     })
 
-    describe('Dropdown navigation tests', () => {
+    describe('Navigation tests', () => {
         for (const pageTitle in TUTORIALS_PAGE_TITLES_MAP) {
             const pageLink = TUTORIALS_PAGE_TITLES_MAP[pageTitle as keyof typeof TUTORIALS_PAGE_TITLES_MAP]
             it(`Should navigate to the "${pageTitle}" page from "Tutorials" dropdown`, () => {
@@ -37,6 +37,14 @@ describe('w3shools navigation bar tests', () => {
                 homePage.navigationBar.clickNavigationItemByName(NAVIGATION_ITEMS_NAMES.EXERCISES)
                 homePage.navigationBar.clickItemFromDropdownMenuByName(pageTitle)
                 homePage.getCurrentUrl().should('eq', `${BASE_URL}${pageLink}`)
+            })
+        }
+
+        for (const pageTitle in OUTER_PAGE_TITLES_MAP) {
+            const pageLink = OUTER_PAGE_TITLES_MAP[pageTitle as keyof typeof OUTER_PAGE_TITLES_MAP]
+            it(`Should navigate to the "${pageTitle}" page by clicking on button with outer link`, () => {
+                homePage.navigationBar.clickOnButtonWithOuterLink(pageTitle)
+                homePage.getCurrentUrl().should('eq', pageLink)
             })
         }
     })
@@ -68,13 +76,5 @@ describe('w3shools navigation bar tests', () => {
             homePage.navigationBar.clickThemeSwitcher()
             homePage.navigationBar.getPageByTheme('darktheme darkpagetheme').should('be.visible')
         })
-    })
-
-    it.only(`Should add the "Dark code" theme after "Dark mode" has been selected by clicking on theme switcher`, () => {
-       
-       
-        cy.get('a.w3searchbtntopnav').click()
-        cy.get('input[name = "search"]').click()
-        cy.type('')
     })
 })

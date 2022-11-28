@@ -30,3 +30,16 @@ export enum SIGN_UP_NAME_TYPES {
     FIRST_NAME = 'first_name',
     LAST_NAME = 'last_name'
 }
+
+export enum SPECIAL_SYMBOLS {
+    tilde = '~',
+    exclamation = '!',
+    hash = '#',
+    percent = '%',
+    caret = '^',
+    asterisk = '*',
+    hyphen = '-',
+    equals = '=',
+    plus = '+',
+    semicolon = ';',
+}

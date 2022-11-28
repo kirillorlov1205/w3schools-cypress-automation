@@ -91,3 +91,8 @@ export const THEMES = {
     'Dark mode': 'darkpagetheme',
     'Dark code': 'darktheme',
 }
+
+export const OUTER_PAGE_TITLES_MAP = {
+    'Courses': 'https://campus.w3schools.com/collections/course-catalog',
+    'Get Your Own Website With W3Schools Spaces': `${BASE_URL}spaces/`
+}
