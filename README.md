@@ -14,4 +14,4 @@
 
 ### Test paths
 
-- Cypress tests - w3schools-cypress-automation/cypress
+- Cypress test - w3schools-cypress-automation/cypress
