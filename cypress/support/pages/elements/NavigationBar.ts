@@ -62,7 +62,6 @@ export class NavigationBar {
         this.getThemeSwitcher().click()
     }
 
-
     public getThemeFromDropdownByName = (themeName: string) => {
         cy.task('log', `Getting theme by name "${themeName}"...`)
         return cy.xpath(`//label[contains(text(), '${themeName}')]`)

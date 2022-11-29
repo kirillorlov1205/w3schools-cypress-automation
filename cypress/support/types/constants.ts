@@ -83,8 +83,6 @@ export const EXERCISES_PAGE_TITLES_MAP = {
     'HTML Exercises': 'html/html_exercises.asp',
     'CSS Exercises': 'css/css_exercises.asp',
     'JavaScript Exercises': 'js/js_exercises.asp',
-    'CSS Quiz': 'css/css_quiz.asp',
-    'MySQL Quiz': 'mysql/mysql_quiz.asp',
 }
 
 export const THEMES = {

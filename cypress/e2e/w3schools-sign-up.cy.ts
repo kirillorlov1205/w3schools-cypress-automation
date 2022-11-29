@@ -108,7 +108,7 @@ describe('Sign up tests', () => {
         })
     }
 
-    //todo it.only(`Should resend verification email while clicking button "Resend email" on successful sign up page`, () => {
+    // it.only(`Should resend verification email while clicking button "Resend email" on successful sign up page`, () => {
     //     homePage.navigationBar.clickLoginButton()
     //     loginPage.clickSignUpButton()
     //     signUpPage.fillEmailField(randomEmail)
@@ -117,10 +117,9 @@ describe('Sign up tests', () => {
     //     signUpPage.fillNameFieldByType(SIGN_UP_NAME_TYPES.FIRST_NAME, TEST_USER.first_name)
     //     signUpPage.fillNameFieldByType(SIGN_UP_NAME_TYPES.LAST_NAME, TEST_USER.last_name)
     //     signUpPage.clickSignUpForFreeButton()
-    //     signUpPage.getResendEmailButton().should('be.visible')
     //     signUpPage.clickResendEmailButton()
-    //     // signUpPage.getValidationAlert().should('have.text', `We've resent an email to ${randomEmail} with instructions. Please check your inbox and spam folder.`)
-    //     // signUpPage.getResendEmailButton().should('be.disabled')
+    //     signUpPage.getValidationAlert().should('have.text', `We've resent an email to ${randomEmail} with instructions. Please check your inbox and spam folder.`)
+    //     signUpPage.getResendEmailButton().should('be.disabled')
     // })
 
     it(`Should transfer the user to the login page while clicking button Log in on the Sign up page`, () => {

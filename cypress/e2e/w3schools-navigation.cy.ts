@@ -6,7 +6,7 @@ import { REFERENCES_PAGE_TITLES_MAP, TUTORIALS_PAGE_TITLES_MAP, OUTER_PAGE_TITLE
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 
-describe('w3shools navigation bar tests', () => {
+describe('W3shools navigation bar tests', () => {
 
     beforeEach(() => {
         homePage.visitPage()
