@@ -1,12 +1,8 @@
-# w3schools-cypress-automation
-
 ### w3schools-cypress-automation repository includes:
 
 #### E2E tests for https://www.w3schools.com/ web site using framework:
 
 - Cypress
-
-## Tests running:
 
 ### You can use "-npm i" and run tests scripts by "npm run"
 
