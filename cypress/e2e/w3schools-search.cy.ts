@@ -1,41 +1,67 @@
+import { BASE_URL, REFERENCES_PAGE_TITLES_MAP } from 'cypress/support/types/constants'
 import { HomePage } from '../support/pages/HomePage'
 import { PageFactory } from '../support/pages/PageFactory'
-import { PAGES, SEARCH_ITEMS } from '../support/types/enums'
+import { PAGES, SPECIAL_SYMBOLS } from '../support/types/enums'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const textForTest = 'test'
 
-describe('Search test', () => {
+describe('Search tests', () => {
 
     beforeEach(() => {
         homePage.visitPage()
     })
 
-    // it('Should not open search modal page without providing text', () => {
-    //     homePage.searchField.clickSearchField()
-    //     homePage.searchField.getSearchField().should('be.visible')
-    // })
+    describe('Search on Home page tests', () => {
 
-    it(`Should search for "${textForTest}"`, () => {
-        homePage.searchField.fillSearchField(textForTest)
-        homePage.searchField.getSearchModalPage()
+        it(`Should search for "${textForTest}"`, () => {
+            homePage.fillSearchFieldOnHomePage(textForTest)
+            homePage.getSearchDropdownOnHomePage().should('be.visible')
+        })
+
+        it(`Shouldn't open search modal page without providing any text in the search field`, () => {
+            homePage.clickSubmitSearchButtonOnHomePage()
+            homePage.getSearchDropdownOnHomePage().should('not.be.visible')
+        })
+
+        for (const title in REFERENCES_PAGE_TITLES_MAP) {
+            const pageLink = REFERENCES_PAGE_TITLES_MAP[title as keyof typeof REFERENCES_PAGE_TITLES_MAP]
+            it(`Should search for "${title}" page`, () => {
+                homePage.fillSearchFieldOnHomePage(title)
+                homePage.clickSubmitSearchButtonOnHomePage()
+                homePage.getCurrentUrl().should('eq', `${BASE_URL}${pageLink}`)
+            })
+        }
     })
 
-    // it(`Should show search section "в новостях" on modal page while clicking and providing text "${textForTest}"`, () => {
-    //     homePage.searchField.fillSearchField(textForTest)
-    //     homePage.searchField.getSearchTabsItemByName(SEARCH_ITEMS.NEWS).click()
-    //     homePage.searchField.getSearchFilterItemByName('За полгода').should('be.visible')
-    // })
+    describe('Search on navigation bar tests', () => {
 
-    // it(`Should show search section "на барахолке" on modal page while clicking and providing text "${textForTest}"`, () => {
-    //     homePage.searchField.fillSearchField(textForTest)
-    //     homePage.searchField.getSearchTabsItemByName(SEARCH_ITEMS.BARAHOLKA).click()
-    //     homePage.searchField.getCatalogSearchResultsList().should('be.visible')
-    // })
+        it(`Should search for "${textForTest}"`, () => {
+            homePage.searchField.clickSearchIcon()
+            homePage.searchField.fillSearchField(textForTest)
+            homePage.searchField.getSearchModalPage().should('be.visible')
+        })
 
-    // it(`Should show search section "на форуме" on modal page while clicking and providing text "${textForTest}"`, () => {
-    //     homePage.searchField.fillSearchField(textForTest)
-    //     homePage.searchField.getSearchTabsItemByName(SEARCH_ITEMS.FORUM).click()
-    //     homePage.searchField.getResultItemFromForumList().should('be.visible')
-    // })
+        it(`Shouldn't open search modal page without providing any text in the search field`, () => {
+            homePage.searchField.clickSearchIcon()
+            homePage.searchField.clickSubmitSearchButton()
+            homePage.searchField.getSearchModalPage().should('not.exist')
+        })
+
+        for (const key in SPECIAL_SYMBOLS) {
+            const specialSymbol = SPECIAL_SYMBOLS[key as keyof typeof SPECIAL_SYMBOLS]
+            it(`Should search for special symbol "${specialSymbol}"`, () => {
+                homePage.searchField.clickSearchIcon()
+                homePage.searchField.fillSearchField(specialSymbol)
+                homePage.searchField.getSearchModalPage().should('be.visible')
+            })
+        }
+
+        it(`Shouldn't open search modal page while searching for space character " "`, () => {
+            homePage.searchField.clickSearchIcon()
+            homePage.searchField.fillSearchField(' ')
+            homePage.searchField.clickSubmitSearchButton()
+            homePage.searchField.getSearchModalPage().should('not.exist')
+        })
+    })
 })
