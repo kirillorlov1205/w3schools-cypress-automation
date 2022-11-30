@@ -18,12 +18,12 @@ export class SearchField {
     }
 
     public getSubmitSearchButton = () => {
-        cy.task('log', 'Getting submit search button...')
+        cy.task('log', 'Getting [submit search] button...')
         return cy.get('button.gsc-search-button')
     }
 
     public clickSubmitSearchButton = () => {
-        cy.task('log', 'Clicking submit search button...')
+        cy.task('log', 'Clicking [submit search] button...')
         this.getSubmitSearchButton().click()
     }
 

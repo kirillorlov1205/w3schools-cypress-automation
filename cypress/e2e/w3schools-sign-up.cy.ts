@@ -20,11 +20,11 @@ describe('Sign up tests', () => {
     })
 
     it(`Should successfully register the user with email "${randomEmail}", 
-    password "${TEST_USER.password}", first name "${TEST_USER.first_name}", lastName "${TEST_USER.last_name}"`, () => {
+    password "${TEST_USER.password}", first name "${TEST_USER.first_name}", last name "${TEST_USER.last_name}"`, () => {
         signUpPage.register(randomEmail, TEST_USER.password, TEST_USER.first_name, TEST_USER.last_name)
     })
 
-    it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.emptyEmailValidationMessage}" validation message while registration with empty email and valid password ${TEST_USER.password}`, () => {
+    it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.emptyEmailValidationMessage}" validation message while registration with empty email and valid password "${TEST_USER.password}"`, () => {
         homePage.navigationBar.clickLoginButton()
         loginPage.clickSignUpButton()
         signUpPage.fillPasswordField(TEST_USER.password)
@@ -32,8 +32,8 @@ describe('Sign up tests', () => {
         signUpPage.getEmailValidationMessage().should('have.text', SIGN_UP_VALIDATION_MESSAGES.emptyEmailValidationMessage)
     })
 
-    for (const value in INVALID_EMAILS) {
-        const invalidEmail = INVALID_EMAILS[value as keyof typeof INVALID_EMAILS]
+    for (const key in INVALID_EMAILS) {
+        const invalidEmail = INVALID_EMAILS[key as keyof typeof INVALID_EMAILS]
         it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidEmailValidationMessage}" validation message while registration with invalid email "${invalidEmail}" and valid password "${TEST_USER.password}"`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickSignUpButton()
@@ -45,28 +45,28 @@ describe('Sign up tests', () => {
         })
     }
 
-    it(`Should transfer the user to the login page while clicking button Log in on the Sign up page`, () => {
+    it(`Should transfer the user to the Login page while clicking button [Log in] on the Sign up page`, () => {
         homePage.navigationBar.clickLoginButton()
         loginPage.clickSignUpButton()
         signUpPage.clickReturnToLoginButton()
         loginPage.getSignUpButton().should('be.visible')
     })
 
-    for (const value in SIGN_UP_INVALID_PASSWORDS) {
-        const invalidPassword = SIGN_UP_INVALID_PASSWORDS[value as keyof typeof SIGN_UP_INVALID_PASSWORDS]
-        it(`Should active password validation helper "${value}" while registration with invalid password "${invalidPassword}"`, () => {
+    for (const key in SIGN_UP_INVALID_PASSWORDS) {
+        const invalidPassword = SIGN_UP_INVALID_PASSWORDS[key as keyof typeof SIGN_UP_INVALID_PASSWORDS]
+        it(`Should active password validation helper "${key}" while registration with invalid password "${invalidPassword}"`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickSignUpButton()
             signUpPage.getSignUpForFreeButton().should('be.visible')
             signUpPage.fillEmailField(TEST_USER.email)
             signUpPage.fillPasswordField(invalidPassword)
-            signUpPage.getPasswordValidationHelperByName(value).should('have.attr', 'fill', '#04AA6D')
+            signUpPage.getPasswordValidationHelperByName(key).should('have.attr', 'fill', '#04AA6D')
         })
     }
 
-    for (const value in SIGN_UP_INVALID_NAMES) {
-        const invalidFirstName = SIGN_UP_INVALID_NAMES[value as keyof typeof SIGN_UP_INVALID_NAMES]
-        it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage}" validation message while registration with first name "${invalidFirstName}" that "${value}"`, () => {
+    for (const key in SIGN_UP_INVALID_NAMES) {
+        const invalidFirstName = SIGN_UP_INVALID_NAMES[key as keyof typeof SIGN_UP_INVALID_NAMES]
+        it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage}" validation message while registration with first name "${invalidFirstName}" that "${key}"`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickSignUpButton()
             signUpPage.fillEmailField(randomEmail)
@@ -79,9 +79,9 @@ describe('Sign up tests', () => {
         })
     }
 
-    for (const value in SIGN_UP_INVALID_NAMES) {
-        const invalidLastName = SIGN_UP_INVALID_NAMES[value as keyof typeof SIGN_UP_INVALID_NAMES]
-        it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage}" validation message while registration with last name "${invalidLastName}" that "${value}"`, () => {
+    for (const key in SIGN_UP_INVALID_NAMES) {
+        const invalidLastName = SIGN_UP_INVALID_NAMES[key as keyof typeof SIGN_UP_INVALID_NAMES]
+        it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage}" validation message while registration with last name "${invalidLastName}" that "${key}"`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickSignUpButton()
             signUpPage.fillEmailField(randomEmail)
@@ -94,8 +94,8 @@ describe('Sign up tests', () => {
         })
     }
 
-    for (const value in SIGN_UP_NAME_TYPES) {
-        const nameType = SIGN_UP_NAME_TYPES[value as keyof typeof SIGN_UP_NAME_TYPES]
+    for (const key in SIGN_UP_NAME_TYPES) {
+        const nameType = SIGN_UP_NAME_TYPES[key as keyof typeof SIGN_UP_NAME_TYPES]
         it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage}" validation message while registration with empty "${nameType}"`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickSignUpButton()
@@ -108,14 +108,14 @@ describe('Sign up tests', () => {
         })
     }
 
-    it(`Should transfer the user to the login page while clicking button Log in on the Sign up page`, () => {
+    it(`Should transfer the user to the Login page while clicking button [Log in] on the Sign up page`, () => {
         homePage.navigationBar.clickLoginButton()
         loginPage.clickSignUpButton()
         signUpPage.clickReturnToLoginButton()
         loginPage.getSignUpButton().should('be.visible')
     })
 
-    it(`Should transfer the user to the Home page while clicking on "Home Page" navigation button on the sign up page`, () => {
+    it(`Should transfer the user to the Home page while clicking on [Home Page] navigation button on the Sign up page`, () => {
         homePage.navigationBar.clickLoginButton()
         loginPage.clickSignUpButton()
         signUpPage.clickHomePageButton()

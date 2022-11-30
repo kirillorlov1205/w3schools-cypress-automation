@@ -1,13 +1,13 @@
 import { defineConfig } from 'cypress'
 import AllureWriter from '@shelex/cypress-allure-plugin/writer'
-import { ASSETS_FOLDER, BASE_URL, DEFAULT_WAITNG_TIME } from './support/types/constants'
+import { ASSETS_FOLDER, BASE_URL, DEFAULT_WAITING_TIME } from './support/types/constants'
 import { logger } from './support/logger'
 
 export default defineConfig({
   e2e: {
     specPattern: 'cypress/**/*sign-up.cy.ts',
     baseUrl: BASE_URL,
-    defaultCommandTimeout: DEFAULT_WAITNG_TIME,
+    defaultCommandTimeout: DEFAULT_WAITING_TIME,
     supportFile: 'cypress/support/index.ts',
     videosFolder: `${ASSETS_FOLDER}/videos`,
     downloadsFolder: `${ASSETS_FOLDER}/downloads`,

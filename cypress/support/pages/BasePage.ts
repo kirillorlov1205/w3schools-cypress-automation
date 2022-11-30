@@ -1,5 +1,4 @@
 import { NavigationBar } from './elements/NavigationBar'
-import { SearchField } from './elements/SearchField'
 
 export class BasePage {
 
@@ -34,31 +33,4 @@ export class BasePage {
         cy.task('log', `Clicking page header by "${name}" name ...`)
         this.getPageHeaderByName(name).click()
     }
-
-    // public getPageHeaderByName = (name: string) => {
-    //     cy.task('log', `Getting page header by "${name}" name...`)
-    //     switch (name) {
-    //         case 'Catalog':
-    //             return cy.get('a.catalog-navigation__bubble')
-    //         case 'Auto':
-    //             return cy.get('div.vehicle-form h1')
-    //         case 'Realt':
-    //             return cy.get('a[href="https://r.onliner.by/pk/"] span.project-navigation__sign')
-    //         case 'Tasks':
-    //             return cy.get('a[href= "/tasks"] span.project-navigation__sign')
-    //         case 'Baraholka':
-    //             return cy.get('div.b-mnforum-header-i h1')
-    //         case 'Forum':
-    //             return cy.get('h1.m-title')
-    //         default:
-    //             throw new Error('No such header')
-    //     }
-    // }
-
-    // public waitTillPageHeaderIncludeText(pageHeader: string, headerText: string) {
-    //     cy.task('log', `Waiting till ${pageHeader} page header include "${headerText}" text...`)
-    //     this.getPageHeaderByName(pageHeader).invoke('text').then((text: string) => {
-    //         expect(text).to.include(headerText)
-    //     })
-    // }
 }

@@ -12,12 +12,6 @@ export enum PAGES {
     SIGN_UP_PAGE = 'SignUpPage'
 }
 
-export enum SEARCH_ITEMS {
-    NEWS = 'в новостях',
-    BARAHOLKA = 'на барахолке',
-    FORUM = 'на форуме',
-}
-
 export enum PASSWORD_VALIDATION_HELPERS {
     LOWERCASE_CHARACTER = 'One lowercase character',
     UPPERCASE_CHARACTER = 'One uppercase character',

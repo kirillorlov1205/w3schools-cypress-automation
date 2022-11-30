@@ -27,7 +27,7 @@ export class LoginPage extends BasePage {
     }
 
     public getSubmitButton = () => {
-        cy.task('log', 'Getting submit button...')
+        cy.task('log', 'Getting [submit] button...')
         return cy.get('button.Button_primary__d2Jt3')
     }
 
@@ -47,32 +47,32 @@ export class LoginPage extends BasePage {
     }
 
     public getForgotPasswordButton() {
-        cy.task('log', 'Getting forgot password button...')
+        cy.task('log', 'Getting [forgot password] button...')
         return cy.get('div.LoginModal_forgot_pwd_wrapper__qttSX')
     }
 
     public clickForgotPasswordButton() {
-        cy.task('log', 'Clicking forgot password button...')
+        cy.task('log', 'Clicking [forgot password] button...')
         this.getForgotPasswordButton().click()
     }
 
     public getSignUpButton() {
-        cy.task('log', 'Getting sign up button...')
+        cy.task('log', 'Getting [sign up] button...')
         return cy.xpath('//span[contains(text()," Sign up")]')
     }
 
     public clickSignUpButton() {
-        cy.task('log', 'Clicking sign up button...')
+        cy.task('log', 'Clicking [sign up] button...')
         this.getSignUpButton().click()
     }
     
     public getHomePageButton() {
-        cy.task('log', 'Getting home page button...')
+        cy.task('log', 'Getting [home page] button...')
         return cy.get('a[href="https://w3schools.com"]')
     }
 
     public clickHomePageButton = () => {
-        cy.task('log', 'Clicking home page button...')
+        cy.task('log', 'Clicking [home page] button...')
         this.getHomePageButton().click()
     }
 }

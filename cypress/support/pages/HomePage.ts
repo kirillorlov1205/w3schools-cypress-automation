@@ -12,12 +12,12 @@ export class HomePage extends BasePage {
     }
 
     public getWhereToBeginButton() {
-        cy.task('log', 'Getting "Where to begin button"...')
+        cy.task('log', 'Getting [Where to begin] button...')
         return cy.get('a[href="where_to_start.asp"]')
     }
 
     public clickWhereToBeginButton() {
-        cy.task('Clicking "Where to begin button"...')
+        cy.task('Clicking [Where to begin] button...')
         this.getWhereToBeginButton().click()
     }
 
@@ -27,12 +27,12 @@ export class HomePage extends BasePage {
     }
 
     public getSubmitSearchButtonOnHomePage = () => {
-        cy.task('log', 'Getting submit search button on Home Page...')
+        cy.task('log', 'Getting [submit search] button on Home Page...')
         return cy.get('button[id="learntocode_searchbtn"]')
     }
 
     public clickSubmitSearchButtonOnHomePage = () => {
-        cy.task('log', 'Clicking submit search button on Home Page...')
+        cy.task('log', 'Clicking [submit search] button on Home Page...')
         this.getSubmitSearchButtonOnHomePage().click()
     }
 

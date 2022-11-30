@@ -3,32 +3,32 @@ export class NavigationBar {
     constructor() { }
 
     public getLoginButton = () => {
-        cy.task('log', 'Getting login button...')
+        cy.task('log', 'Getting [login] button...')
         return cy.get('a[id="w3loginbtn"]')
     }
 
     public clickLoginButton = () => {
-        cy.task('log', 'Clicking login button...')
+        cy.task('log', 'Clicking [login] button...')
         this.getLoginButton().click()
     }
 
     public getLogOutButton() {
-        cy.task('log', 'Getting log out button...')
+        cy.task('log', 'Getting [log out] button...')
         return cy.get('button._tFEpH')
     }
 
     public clickLogOutButton = () => {
-        cy.task('log', 'Clicking log out button...')
+        cy.task('log', 'Clicking [log out] button...')
         this.getLogOutButton().click()
     }
 
     public getHomePageNavigationButton() {
-        cy.task('log', 'Getting home page button...')
+        cy.task('log', 'Getting [Home page] button...')
         return cy.get('a[href="https://www.w3schools.com "]')
     }
 
     public clickHomePageButton = () => {
-        cy.task('log', 'Clicking home page button...')
+        cy.task('log', 'Clicking [Home page] button...')
         this.getHomePageNavigationButton().click()
     }
 
