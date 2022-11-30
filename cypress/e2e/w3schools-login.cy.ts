@@ -28,7 +28,7 @@ describe('Login tests', () => {
             homePage.navigationBar.clickLogOutButton()
         })
 
-        it('Should transfer the user to the sign up page while clicking on sign up button on login page', () => {
+        it('Should transfer the user to the Sign up page while clicking on [sign up] button on Login page', () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickSignUpButton()
             signUpPage.getSignUpForFreeButton().should('be.visible')
@@ -41,8 +41,8 @@ describe('Login tests', () => {
             loginPage.getEmailValidationMessage().should('have.text', LOGIN_VALIDATION_MESSAGES.emptyEmailValidationMessage)
         })
 
-        for (const value in INVALID_EMAILS) {
-            const invalidEmail = INVALID_EMAILS[value as keyof typeof INVALID_EMAILS]
+        for (const key in INVALID_EMAILS) {
+            const invalidEmail = INVALID_EMAILS[key as keyof typeof INVALID_EMAILS]
             it(`Should show "${LOGIN_VALIDATION_MESSAGES.invalidEmailValidationMessage}" validation message while logging in with invalid email "${invalidEmail}" and valid password`, () => {
                 homePage.navigationBar.clickLoginButton()
                 loginPage.fillEmailField(invalidEmail)
@@ -75,13 +75,13 @@ describe('Login tests', () => {
             loginPage.getValidationAlert().should('have.text', LOGIN_VALIDATION_MESSAGES.invalidPasswordValidationMessage)
         })
 
-        it('Should transfer the user to the reset password page', () => {
+        it('Should transfer the user to the Reset password page', () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.getForgotPasswordButton().click()
             resetPasswordPage.getEmailField().should('be.visible')
         })
 
-        it(`Should transfer the user to the Home page while clicking on "Home Page" navigation button on the Login page`, () => {
+        it(`Should transfer the user to the Home page while clicking on [Home page] navigation button on the Login page`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickHomePageButton()
             homePage.getWhereToBeginButton().should('be.visible')
@@ -98,7 +98,7 @@ describe('Login tests', () => {
             resetPasswordPage.getSuccessfulValidationEmailMessage().should('have.text', PASSWORD_RESET_VALIDATION_MESSAGES.successfulValidationEmailMessage)
         })
 
-        it(`Should send the email with password resetting instraction with valid email "${TEST_USER.email}"`, () => {
+        it(`Should send the email with password resetting instruction with valid email "${TEST_USER.email}"`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickForgotPasswordButton()
             resetPasswordPage.fillEmailField(TEST_USER.email)
@@ -107,7 +107,7 @@ describe('Login tests', () => {
             resetPasswordPage.getPasswordResetSpamInfoMessage().should('have.text', PASSWORD_RESET_VALIDATION_MESSAGES.passwordResetSpamInfoMessage)
         })
 
-        it('Should navigate to the Login page while clicking button "Return to login" on successful password reset page', () => {
+        it('Should navigate to the Login page while clicking button [Return to login] on Successful password reset page', () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickForgotPasswordButton()
             resetPasswordPage.fillEmailField(TEST_USER.email)
@@ -116,8 +116,8 @@ describe('Login tests', () => {
             loginPage.getEmailField().should('be.visible')
         })
 
-        for (const value in INVALID_EMAILS) {
-            const invalidEmail = INVALID_EMAILS[value as keyof typeof INVALID_EMAILS]
+        for (const key in INVALID_EMAILS) {
+            const invalidEmail = INVALID_EMAILS[key as keyof typeof INVALID_EMAILS]
             it(`Should show "${PASSWORD_RESET_VALIDATION_MESSAGES.InvalidEmailValidationMessage}" validation message while resetting password with invalid email "${invalidEmail}"`, () => {
                 homePage.navigationBar.clickLoginButton()
                 loginPage.clickForgotPasswordButton()
@@ -127,7 +127,7 @@ describe('Login tests', () => {
             })
         }
 
-        it('Should navigate to the Login page while clicking button "Return to login" on reset password page', () => {
+        it('Should navigate to the Login page while clicking button [Return to login] on Reset password page', () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickForgotPasswordButton()
             resetPasswordPage.clickReturnToLoginButton()
@@ -142,7 +142,7 @@ describe('Login tests', () => {
             resetPasswordPage.getEmailDoesNotExistAlert().should('have.text', PASSWORD_RESET_VALIDATION_MESSAGES.emailDoesNotExistAlert)
         })
 
-        it(`Should transfer the user to the Home page while clicking on "Home Page" navigation button on the Password reset page`, () => {
+        it(`Should transfer the user to the Home page while clicking on [Home page] navigation button on the Password reset page`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickHomePageButton()
             homePage.getWhereToBeginButton().should('be.visible')

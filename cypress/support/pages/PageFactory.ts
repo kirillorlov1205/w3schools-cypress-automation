@@ -16,7 +16,7 @@ export class PageFactory {
             case PAGES.SIGN_UP_PAGE:
                 return new SignUpPage()
             default:
-                throw new Error('incorrect page name is provided')
+                throw new Error('Incorrect page name is provided')
         }
     }
 }

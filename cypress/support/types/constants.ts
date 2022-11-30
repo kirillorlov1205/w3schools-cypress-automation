@@ -1,6 +1,6 @@
 export const BASE_URL = 'https://www.w3schools.com/'
 
-export const DEFAULT_WAITNG_TIME = 10000
+export const DEFAULT_WAITING_TIME = 10000
 
 export const ASSETS_FOLDER = 'cypress/assets'
 

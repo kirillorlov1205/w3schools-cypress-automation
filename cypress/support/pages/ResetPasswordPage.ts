@@ -17,12 +17,12 @@ export class ResetPasswordPage extends BasePage {
     }
 
     public getReturnToLoginButton() {
-        cy.task('log', 'Getting return to login button...')
+        cy.task('log', 'Getting [return to login] button...')
         return cy.get('div.ResetPasswordRequest_return_to_login_wrapper__-jz5P')
     }
 
     public clickReturnToLoginButton() {
-        cy.task('log', 'Clicking return to login button...')
+        cy.task('log', 'Clicking [return to login] button...')
         this.getReturnToLoginButton().click()
     }
 
@@ -32,12 +32,12 @@ export class ResetPasswordPage extends BasePage {
     }
 
     public getResetPasswordSubmitButton() {
-        cy.task('log', 'Getting reset password submit button...')
+        cy.task('log', 'Getting [reset password submit] button...')
         return cy.get('div.ResetPasswordRequest_cta_bottom_box__gSd9O button')
     }
 
     public clickResetPasswordSubmitButton() {
-        cy.task('log', 'Clicking reset password submit button...')
+        cy.task('log', 'Clicking [reset password submit] button...')
         this.getResetPasswordSubmitButton().click()
     }
 
@@ -57,12 +57,12 @@ export class ResetPasswordPage extends BasePage {
     }
 
     public getReturnToLoginButtonOnSuccessfulResetPage() {
-        cy.task('log', 'Getting return to login button on successful reset page...')
+        cy.task('log', 'Getting [return to login button] on successful reset page...')
         return cy.get('div.ResetPasswordRequest_cta_bottom_box__gSd9O a')
     }
 
     public clickReturnToLoginButtonOnSuccessfulResetPage() {
-        cy.task('log', 'Clicking return to login button on successful reset page...')
+        cy.task('log', 'Clicking [return to login button] on successful reset page...')
         this.getReturnToLoginButtonOnSuccessfulResetPage().click()
     }
 

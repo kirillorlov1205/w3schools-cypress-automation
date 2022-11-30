@@ -1,6 +1,7 @@
 import { SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../types/constants'
 import { SIGN_UP_NAME_TYPES } from '../types/enums'
 import { LoginPage } from './LoginPage'
+
 export class SignUpPage extends LoginPage {
 
     constructor() {
@@ -8,12 +9,12 @@ export class SignUpPage extends LoginPage {
     }
 
     public getSignUpForFreeButton() {
-        cy.task('log', 'Getting sign up submit button...')
+        cy.task('log', 'Getting [sign up submit] button...')
         return cy.get('div.LoginModal_cta_bottom_box_button_login__5Fbwv span')
     }
 
     public clickSignUpForFreeButton() {
-        cy.task('log', 'Clicking sign up submit button...')
+        cy.task('log', 'Clicking [sign up submit] button...')
         this.getSignUpForFreeButton().click()
     }
 
@@ -42,12 +43,12 @@ export class SignUpPage extends LoginPage {
     }
 
     public getReturnToLoginButton() {
-        cy.task('log', 'Getting Log in button...')
+        cy.task('log', 'Getting [log in] button...')
         return cy.xpath('//span[contains(text(), " Log in")]')
     }
 
     public clickReturnToLoginButton() {
-        cy.task('log', 'Clicking log in button...')
+        cy.task('log', 'Clicking [log in] button...')
         this.getReturnToLoginButton().click()
     }
 
@@ -62,12 +63,12 @@ export class SignUpPage extends LoginPage {
     }
 
     public getResendEmailButton() {
-        cy.task('log', 'Getting resend email button...')
+        cy.task('log', 'Getting [resend email] button...')
         return cy.xpath('//button[contains(text(), "Resend verification email")]')
     }
 
     public clickResendEmailButton() {
-        cy.task('log', 'Clicking resend email button...')
+        cy.task('log', 'Clicking [resend email] button...')
         this.getResendEmailButton().click()
     }
 }
