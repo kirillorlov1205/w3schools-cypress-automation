@@ -75,9 +75,9 @@ describe('Login tests', () => {
             loginPage.getValidationAlert().should('have.text', LOGIN_VALIDATION_MESSAGES.invalidPasswordValidationMessage)
         })
 
-        it('Should transfer the user to the Reset password page', () => {
+        it.only('Should transfer the user to the Reset password page', () => {
             homePage.navigationBar.clickLoginButton()
-            loginPage.getForgotPasswordButton().click()
+            loginPage.clickForgotPasswordButton()
             resetPasswordPage.getEmailField().should('be.visible')
         })
 
@@ -90,7 +90,7 @@ describe('Login tests', () => {
 
     describe('Reset password page tests', () => {
 
-        it(`Should show "${PASSWORD_RESET_VALIDATION_MESSAGES.InvalidEmailValidationMessage}" validation message and allow the user to reset password with valid email "${TEST_USER.email}"`, () => {
+        it(`Should show "${PASSWORD_RESET_VALIDATION_MESSAGES.successfulValidationEmailMessage}" validation message and allow the user to reset password with valid email "${TEST_USER.email}"`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickForgotPasswordButton()
             resetPasswordPage.fillEmailField(TEST_USER.email)
@@ -107,7 +107,7 @@ describe('Login tests', () => {
             resetPasswordPage.getPasswordResetSpamInfoMessage().should('have.text', PASSWORD_RESET_VALIDATION_MESSAGES.passwordResetSpamInfoMessage)
         })
 
-        it('Should navigate to the Login page while clicking button [Return to login] on Successful password reset page', () => {
+        it('Should navigate to the Login page while clicking button [Return to login] on successful password reset page', () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickForgotPasswordButton()
             resetPasswordPage.fillEmailField(TEST_USER.email)
@@ -142,9 +142,10 @@ describe('Login tests', () => {
             resetPasswordPage.getEmailDoesNotExistAlert().should('have.text', PASSWORD_RESET_VALIDATION_MESSAGES.emailDoesNotExistAlert)
         })
 
-        it(`Should transfer the user to the Home page while clicking on [Home page] navigation button on the Password reset page`, () => {
+        it.only(`Should transfer the user to the Home page while clicking on [Home page] navigation button on the Password reset page`, () => {
             homePage.navigationBar.clickLoginButton()
-            loginPage.clickHomePageButton()
+            loginPage.clickForgotPasswordButton()
+            resetPasswordPage.clickHomePageButton()
             homePage.getWhereToBeginButton().should('be.visible')
         })
     })
