@@ -19,7 +19,7 @@ describe('Search tests', () => {
             homePage.getSearchDropdownOnHomePage().should('be.visible')
         })
 
-        it(`Shouldn't open search modal page without providing any text in the search field`, () => {
+        it(`Shouldn't open search dropdown without providing any text in the search field`, () => {
             homePage.clickSubmitSearchButtonOnHomePage()
             homePage.getSearchDropdownOnHomePage().should('not.be.visible')
         })

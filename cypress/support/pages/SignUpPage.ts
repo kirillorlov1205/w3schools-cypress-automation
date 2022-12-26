@@ -1,4 +1,4 @@
-import { SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../types/constants'
+import { SIGN_UP_VALIDATION_MESSAGES } from '../types/constants'
 import { SIGN_UP_NAME_TYPES } from '../types/enums'
 import { LoginPage } from './LoginPage'
 
@@ -39,7 +39,6 @@ export class SignUpPage extends LoginPage {
         this.fillNameFieldByType(SIGN_UP_NAME_TYPES.FIRST_NAME, firstName)
         this.fillNameFieldByType(SIGN_UP_NAME_TYPES.LAST_NAME, lastName)
         this.clickSignUpForFreeButton()
-        this.getValidationAlert().should('have.text', `We've sent an email to ${email} with instructions.`)
     }
 
     public getReturnToLoginButton() {

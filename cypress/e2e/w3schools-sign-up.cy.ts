@@ -22,6 +22,7 @@ describe('Sign up tests', () => {
     it(`Should successfully register the user with email "${randomEmail}", 
     password "${TEST_USER.password}", first name "${TEST_USER.first_name}", last name "${TEST_USER.last_name}"`, () => {
         signUpPage.register(randomEmail, TEST_USER.password, TEST_USER.first_name, TEST_USER.last_name)
+        signUpPage.getValidationAlert().should('have.text', `We've sent an email to ${randomEmail} with instructions.`)
     })
 
     it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.emptyEmailValidationMessage}" validation message while registration with empty email and valid password "${TEST_USER.password}"`, () => {
@@ -94,19 +95,19 @@ describe('Sign up tests', () => {
         })
     }
 
-    for (const key in SIGN_UP_NAME_TYPES) {
-        const nameType = SIGN_UP_NAME_TYPES[key as keyof typeof SIGN_UP_NAME_TYPES]
-        it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage}" validation message while registration with empty "${nameType}"`, () => {
-            homePage.navigationBar.clickLoginButton()
-            loginPage.clickSignUpButton()
-            signUpPage.fillEmailField(randomEmail)
-            signUpPage.fillPasswordField(TEST_USER.password)
-            signUpPage.clickSignUpForFreeButton()
-            signUpPage.fillNameFieldByType(nameType, nameType)
-            signUpPage.clickSignUpForFreeButton()
-            signUpPage.getNameInputErrorMessage().should('have.text', SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage)
-        })
-    }
+    // for (const key in SIGN_UP_NAME_TYPES) {
+    //     const nameType = SIGN_UP_NAME_TYPES[key as keyof typeof SIGN_UP_NAME_TYPES]
+    //     it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage}" validation message while registration with empty "${nameType}"`, () => {
+    //         homePage.navigationBar.clickLoginButton()
+    //         loginPage.clickSignUpButton()
+    //         signUpPage.fillEmailField(randomEmail)
+    //         signUpPage.fillPasswordField(TEST_USER.password)
+    //         signUpPage.clickSignUpForFreeButton()
+    //         signUpPage.fillNameFieldByType(nameType, nameType)
+    //         signUpPage.clickSignUpForFreeButton()
+    //         signUpPage.getNameInputErrorMessage().should('have.text', SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage)
+    //     })
+    // }
 
     it(`Should transfer the user to the Login page while clicking button [Log in] on the Sign up page`, () => {
         homePage.navigationBar.clickLoginButton()
