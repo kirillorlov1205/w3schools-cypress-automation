@@ -75,7 +75,7 @@ describe('Login tests', () => {
             loginPage.getValidationAlert().should('have.text', LOGIN_VALIDATION_MESSAGES.invalidPasswordValidationMessage)
         })
 
-        it.only('Should transfer the user to the Reset password page', () => {
+        it('Should transfer the user to the Reset password page', () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickForgotPasswordButton()
             resetPasswordPage.getEmailField().should('be.visible')
@@ -142,7 +142,7 @@ describe('Login tests', () => {
             resetPasswordPage.getEmailDoesNotExistAlert().should('have.text', PASSWORD_RESET_VALIDATION_MESSAGES.emailDoesNotExistAlert)
         })
 
-        it.only(`Should transfer the user to the Home page while clicking on [Home page] navigation button on the Password reset page`, () => {
+        it(`Should transfer the user to the Home page while clicking on [Home page] navigation button on the Password reset page`, () => {
             homePage.navigationBar.clickLoginButton()
             loginPage.clickForgotPasswordButton()
             resetPasswordPage.clickHomePageButton()
