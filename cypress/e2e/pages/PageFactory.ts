@@ -1,4 +1,4 @@
-import { PAGES } from '../types/enums'
+import { PAGES } from 'cypress/support/enums'
 import { HomePage } from './HomePage'
 import { LoginPage } from './LoginPage'
 import { ResetPasswordPage } from './ResetPasswordPage'

@@ -1,7 +1,7 @@
-import { BASE_URL, REFERENCES_PAGE_TITLES_MAP } from 'cypress/support/types/constants'
-import { HomePage } from '../support/pages/HomePage'
-import { PageFactory } from '../support/pages/PageFactory'
-import { PAGES, SPECIAL_SYMBOLS } from '../support/types/enums'
+import { BASE_URL, REFERENCES_PAGE_TITLES_MAP } from 'cypress/support/constants'
+import { HomePage } from 'cypress/e2e/pages/HomePage'
+import { PageFactory } from 'cypress/e2e/pages/PageFactory'
+import { PAGES, SPECIAL_SYMBOLS } from 'cypress/support/enums'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const textForTest = 'test'

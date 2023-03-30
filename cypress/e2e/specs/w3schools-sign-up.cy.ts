@@ -1,11 +1,11 @@
-import { SIGN_UP_INVALID_NAMES, SIGN_UP_INVALID_PASSWORDS, SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from '../support/types/constants'
-import { HomePage } from '../support/pages/HomePage'
-import { LoginPage } from '../support/pages/LoginPage'
-import { PageFactory } from '../support/pages/PageFactory'
-import { INVALID_EMAILS } from '../support/types/constants'
+import { SIGN_UP_INVALID_NAMES, SIGN_UP_INVALID_PASSWORDS, SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from 'cypress/support/constants'
+import { HomePage } from 'cypress/e2e/pages/HomePage'
+import { LoginPage } from 'cypress/e2e/pages/LoginPage'
+import { PageFactory } from 'cypress/e2e/pages/PageFactory'
+import { INVALID_EMAILS } from 'cypress/support/constants'
 import randomstring from 'randomstring'
-import { SignUpPage } from 'cypress/support/pages/SignUpPage'
-import { PAGES, SIGN_UP_NAME_TYPES } from 'cypress/support/types/enums'
+import { SignUpPage } from 'cypress/e2e/pages/SignUpPage'
+import { PAGES, SIGN_UP_NAME_TYPES } from 'cypress/support/enums'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const loginPage: LoginPage = PageFactory.getPage(PAGES.LOGIN) as LoginPage
@@ -95,19 +95,19 @@ describe('Sign up tests', () => {
         })
     }
 
-    // for (const key in SIGN_UP_NAME_TYPES) {
-    //     const nameType = SIGN_UP_NAME_TYPES[key as keyof typeof SIGN_UP_NAME_TYPES]
-    //     it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage}" validation message while registration with empty "${nameType}"`, () => {
-    //         homePage.navigationBar.clickLoginButton()
-    //         loginPage.clickSignUpButton()
-    //         signUpPage.fillEmailField(randomEmail)
-    //         signUpPage.fillPasswordField(TEST_USER.password)
-    //         signUpPage.clickSignUpForFreeButton()
-    //         signUpPage.fillNameFieldByType(nameType, nameType)
-    //         signUpPage.clickSignUpForFreeButton()
-    //         signUpPage.getNameInputErrorMessage().should('have.text', SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage)
-    //     })
-    // }
+    for (const key in SIGN_UP_NAME_TYPES) {
+        const nameType = SIGN_UP_NAME_TYPES[key as keyof typeof SIGN_UP_NAME_TYPES]
+        it(`Should show "${SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage}" validation message while registration with empty "${nameType}"`, () => {
+            homePage.navigationBar.clickLoginButton()
+            loginPage.clickSignUpButton()
+            signUpPage.fillEmailField(randomEmail)
+            signUpPage.fillPasswordField(TEST_USER.password)
+            signUpPage.clickSignUpForFreeButton()
+            signUpPage.fillNameFieldByType(nameType, nameType)
+            signUpPage.clickSignUpForFreeButton()
+            signUpPage.getNameInputErrorMessage().should('have.text', SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage)
+        })
+    }
 
     it(`Should transfer the user to the Login page while clicking button [Log in] on the Sign up page`, () => {
         homePage.navigationBar.clickLoginButton()

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "w3schools e2e automation framework",
   "scripts": {
-    "cy-run": "cypress run --browser chrome --headed --config-file=./cypress/cypress.config.ts",
+    "cy-run": "cypress run --browser chrome --headless --config-file=./cypress/cypress.config.ts",
     "cy-open": "cypress open --config-file=./cypress/cypress.config.ts",
     "cy-report": "allure generate cypress/assets/allure-results --clean -o cypress/assets/allure-report && allure open cypress/assets/allure-report"
   },
@@ -13,7 +13,7 @@
     "@types/randomstring": "^1.1.8",
     "allure-commandline": "^2.20.1",
     "chromedriver": "^107.0.3",
-    "cypress": "^11.0.0",
+    "cypress": "^12.8.1",
     "cypress-iframe": "^1.0.1",
     "cypress-xpath": "^2.0.1",
     "dotenv": "^16.0.3",

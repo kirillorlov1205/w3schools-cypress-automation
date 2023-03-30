@@ -1,5 +1,5 @@
 import { BasePage } from './BasePage'
-import { SearchField } from './elements/SearchField'
+import { SearchField } from '../../e2e/pages/elements/SearchField'
 
 export class HomePage extends BasePage {
 
