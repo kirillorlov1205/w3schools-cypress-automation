@@ -1,12 +1,12 @@
-import { ResetPasswordPage } from 'cypress/support/pages/ResetPasswordPage'
-import { LOGIN_VALIDATION_MESSAGES, PASSWORD_RESET_VALIDATION_MESSAGES, TEST_USER } from '../support/types/constants'
-import { HomePage } from '../support/pages/HomePage'
-import { LoginPage } from '../support/pages/LoginPage'
-import { PageFactory } from '../support/pages/PageFactory'
-import { INVALID_EMAILS } from '../support/types/constants'
+import { ResetPasswordPage } from 'cypress/e2e/pages/ResetPasswordPage'
+import { LOGIN_VALIDATION_MESSAGES, PASSWORD_RESET_VALIDATION_MESSAGES, TEST_USER } from 'cypress/support/constants'
+import { HomePage } from 'cypress/e2e/pages/HomePage'
+import { LoginPage } from 'cypress/e2e/pages/LoginPage'
+import { PageFactory } from 'cypress/e2e/pages/PageFactory'
+import { INVALID_EMAILS } from 'cypress/support/constants'
 import randomstring from 'randomstring'
-import { SignUpPage } from 'cypress/support/pages/SignUpPage'
-import { PAGES } from 'cypress/support/types/enums'
+import { SignUpPage } from 'cypress/e2e/pages/SignUpPage'
+import { PAGES } from 'cypress/support/enums'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const loginPage: LoginPage = PageFactory.getPage(PAGES.LOGIN) as LoginPage
@@ -16,6 +16,8 @@ const signUpPage: SignUpPage = PageFactory.getPage(PAGES.SIGN_UP_PAGE) as SignUp
 describe('Login tests', () => {
 
     beforeEach(() => {
+        cy.clearLocalStorage()
+        cy.clearCookies();
         homePage.visitPage()
     })
 

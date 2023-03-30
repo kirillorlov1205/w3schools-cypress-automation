@@ -1,5 +1,5 @@
-import { SIGN_UP_VALIDATION_MESSAGES } from '../types/constants'
-import { SIGN_UP_NAME_TYPES } from '../types/enums'
+import { SIGN_UP_VALIDATION_MESSAGES } from 'cypress/support/constants'
+import { SIGN_UP_NAME_TYPES } from 'cypress/support/enums'
 import { LoginPage } from './LoginPage'
 
 export class SignUpPage extends LoginPage {

@@ -1,8 +1,8 @@
-import { BASE_URL, EXERCISES_PAGE_TITLES_MAP, THEMES } from 'cypress/support/types/constants'
-import { HomePage } from '../support/pages/HomePage'
-import { PageFactory } from '../support/pages/PageFactory'
-import { NAVIGATION_ITEMS_NAMES, PAGES } from '../support/types/enums'
-import { REFERENCES_PAGE_TITLES_MAP, TUTORIALS_PAGE_TITLES_MAP, OUTER_PAGE_TITLES_MAP } from '../support/types/constants'
+import { BASE_URL, EXERCISES_PAGE_TITLES_MAP, THEMES } from 'cypress/support/constants'
+import { HomePage } from 'cypress/e2e/pages/HomePage'
+import { PageFactory } from 'cypress/e2e/pages/PageFactory'
+import { NAVIGATION_ITEMS_NAMES, PAGES } from 'cypress/support/enums'
+import { REFERENCES_PAGE_TITLES_MAP, TUTORIALS_PAGE_TITLES_MAP, OUTER_PAGE_TITLES_MAP } from 'cypress/support/constants'
 
 const homePage: HomePage = PageFactory.getPage(PAGES.HOME) as HomePage
 

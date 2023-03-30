@@ -1,6 +1,6 @@
 import { defineConfig } from 'cypress'
 import AllureWriter from '@shelex/cypress-allure-plugin/writer'
-import { ASSETS_FOLDER, BASE_URL, DEFAULT_WAITING_TIME } from './support/types/constants'
+import { ASSETS_FOLDER, BASE_URL, DEFAULT_WAITING_TIME } from './support/constants'
 import { logger } from './support/logger'
 
 export default defineConfig({
@@ -15,7 +15,7 @@ export default defineConfig({
     fixturesFolder: 'cypress/fixtures',
     viewportWidth: 1920,
     viewportHeight: 1080,
-    chromeWebSecurity: false,
+    chromeWebSecurity: true,
     setupNodeEvents(on, config) {
       on('task', {
         log(message) {

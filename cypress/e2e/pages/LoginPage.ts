@@ -8,7 +8,7 @@ export class LoginPage extends BasePage {
 
     public getEmailField = () => {
         cy.task('log', 'Getting email field...')
-        return cy.get('input.EmailInput_input_field__6t4Ux')
+        return cy.get('#modalusername')
     }
 
     public fillEmailField = (email: string) => {
